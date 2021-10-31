@@ -2,13 +2,13 @@
   <div class="modal" @click="modal = false" v-if="modal">
     <strong>Режим работы</strong>    
       <ul>
-        <li>Понедельник: {{time.mon}}</li>
-        <li>Вторник: {{time.tue}}</li>
-        <li>Среда: {{time.wed}}</li>
-        <li>Четверг: {{time.thu}}</li>
-        <li>Пятница: {{time.fri}}</li>
-        <li>Суббота: {{time.sat}}</li>
-        <li>Воскресенье: {{time.sun}}</li>
+        <li>Понедельник - {{time.mon}}</li>
+        <li>Вторник - {{time.tue}}</li>
+        <li>Среда - {{time.wed}}</li>
+        <li>Четверг - {{time.thu}}</li>
+        <li>Пятница - {{time.fri}}</li>
+        <li v-if="time.sat !== null ? time.sat : time.sat = 'выходной'">Суббота - {{time.sat}}</li>
+        <li v-if="time.sun !== null ? time.sun : time.sun = 'выходной'">Воскресенье - {{time.sun}}</li>
       </ul>  
     </div>
   <button @click="modal = true">Время работы</button>
@@ -31,9 +31,9 @@ export default {
 .modal {
     position: fixed;
     top: 60px;
-    width: 600px;
+    width: 300px;
     padding: 1rem;
-    background: #fff;
+    background: rgb(171, 233, 230);
     z-index: 1000;
     left: 50%;
     border-radius: 40px;
@@ -43,6 +43,7 @@ export default {
 button {
   width: content-box;
   height: 40px;
+  margin-top: 1rem;
   background: #0880AE;
   box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
   border-radius: 6px;

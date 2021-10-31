@@ -1,25 +1,35 @@
 <template>
-  <div >
     <div class="head w-2/5">
       <strong>Список</strong>
-      <input type="search" placeholder=" input" class="border">
+      <input type="search" v-model="search" placeholder=" Введите адрес">
     </div>
-    <AppMachine />
-  </div>
+    <AppMachine :tradePoints="filteredItems"/>  
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import AppMachine from "./components/AppMachine";
 
 export default {
   components: {AppMachine},
+  data() {
+    return {
+      search: ''
+    }
+  },
   methods: {
     ...mapActions(['getMachines']),
     ...mapActions(['getTradePoints']),
     ...mapActions(['getMachineTypes'])
   },
-  mounted() {
+  computed: {    
+    ...mapGetters(['tradePoints']),
+
+    filteredItems() {
+      return this.tradePoints.data.filter(item => item.location.address.toLowerCase().includes(this.search))
+    }
+  },
+  created() {
     this.getMachines()
     this.getTradePoints()
     this.getMachineTypes()
@@ -31,6 +41,7 @@ export default {
 input {
   background: #FFFFFF;
   border: 1px solid #DBE2EA;
+  text-align: center;
   box-sizing: border-box;
   box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
   border-radius: 6px;
@@ -43,7 +54,7 @@ input:hover {
   border-radius: 6px;
 }
 .head {
-  /*border: 1px solid red;*/
+  border: 1px solid white;
   border-radius: 24px;
   box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.08), 0px 32px 64px rgba(44, 39, 56, 0.14);
   display: flex;

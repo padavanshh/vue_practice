@@ -9,8 +9,8 @@
           <div>Этаж: {{machine.floor}}</div>
           <app-modal :time="point.workingTime"></app-modal>
         </div>
-          <span class='map'>
-            <iframe :src="'http://search.maps.sputnik.ru/search?http://static-api.maps.sputnik.ru/v1/?width=300&height=170&z=16&clng=' + point.location.longitude + '&clat=' + point.location.latitude + '&mlng=' + point.location.longitude + '&mlat=' + point.location.latitude"/>
+          <span class='map'>           
+            <iframe :src="'https://www.openstreetmap.org/export/embed.html?bbox=' + point.location.longitude + '%2C' + point.location.latitude + '%2C' + point.location.longitude + '%2C' + point.location.latitude + '&amp;layer=mapnik&amp;marker=' + point.location.latitude + '%2C' + point.location.longitude"></iframe>
           </span> 
           <br>
           <hr>         

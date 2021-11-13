@@ -2,19 +2,25 @@
   <div v-for="machine in machines.data" :key="machine.id">
     <div v-for="point in tradePoints" :key="point.id">
       <ul v-if="machine.tradePointId ===  point.id">
-        <li class="items w-2/5" >
-        <div>
-          <div><strong>{{ machine.serialNumber }}</strong> <app-tags :machId="machine.id"/></div>
-          <div>{{ point.location.address }}</div>
-          <div>Этаж: {{machine.floor}}</div>
-          <app-modal :time="point.workingTime"></app-modal>
-        </div>
-          <span class='map'>           
-            <iframe :src="'https://www.openstreetmap.org/export/embed.html?bbox=' + point.location.longitude + '%2C' + point.location.latitude + '%2C' + point.location.longitude + '%2C' + point.location.latitude + '&amp;layer=mapnik&amp;marker=' + point.location.latitude + '%2C' + point.location.longitude"></iframe>
-          </span> 
+        <li class="items">
+          <div class="adap">
+            <div  class="flex-wrap">
+              <div><strong>{{ machine.serialNumber }} </strong>
+                <div>
+                  <app-tags :machId="machine.id"/>
+                </div>
+
+              </div>
+              <div class="address">{{ point.location.address }}</div>
+              <div class="floor">Этаж: {{ machine.floor }}</div>
+            </div>
+            <app-modal :time="point.workingTime"></app-modal>
+          </div>
+          <iframe
+              :src="'https://www.openstreetmap.org/export/embed.html?bbox=' + point.location.longitude + '%2C' + point.location.latitude + '%2C' + point.location.longitude + '%2C' + point.location.latitude + '&amp;layer=mapnik&amp;marker=' + point.location.latitude + '%2C' + point.location.longitude"></iframe>
           <br>
-          <hr>         
-         </li>
+          <hr>
+        </li>
       </ul>
     </div>
   </div>
@@ -27,14 +33,14 @@ import AppTags from './AppTags.vue';
 
 export default {
   props: ['tradePoints'],
-  components: {AppTags, AppModal},  
+  components: {AppTags, AppModal},
   computed: {
     ...mapGetters(['machines'])
-  }  
+  }
 }
 </script>
 
-<style scoped>
+<style>
 
 .items {
   display: flex;
@@ -45,4 +51,25 @@ export default {
   padding: 15px;
 }
 
+iframe {
+  margin-left: auto;
+}
+@media (max-width: 640px) {
+  .items {
+    flex-direction: column;
+    height: 25rem;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }
+  .address, .floor {
+    font-size: large;
+  }
+  .adap {
+    display: flex;
+    justify-content: space-between;
+  }
+}
 </style>

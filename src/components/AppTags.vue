@@ -18,5 +18,9 @@ export default {
 </script>
 
 <style>
-
+@media (max-width: 640px) {
+  span {
+    font-size: small;
+  }
+}
 </style>

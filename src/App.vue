@@ -1,9 +1,12 @@
 <template>
-    <div class="head w-2/5">
-      <strong>Список</strong>
+  <div class="max-w-4xl mx-auto">
+    <div class="head">
+      <h1 style="font-size: xx-large">Список</h1>
       <input type="search" v-model="search" placeholder=" Введите адрес">
     </div>
-    <AppMachine :tradePoints="filteredItems"/>  
+    <AppMachine :tradePoints="filteredItems"/>
+  </div>
+
 </template>
 
 <script>
@@ -26,7 +29,7 @@ export default {
     ...mapGetters(['tradePoints']),
 
     filteredItems() {
-      return this.tradePoints.data.filter(item => item.location.address.toLowerCase().includes(this.search))
+      return this.tradePoints.data.filter(item => item.location.address.toLowerCase().includes(this.search.toLowerCase()))
     }
   },
   created() {
@@ -58,7 +61,7 @@ input:hover {
   border-radius: 24px;
   box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.08), 0px 32px 64px rgba(44, 39, 56, 0.14);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: auto;
   padding: 15px;
 }

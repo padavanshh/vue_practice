@@ -57,7 +57,7 @@ button {
 @media (max-width: 640px) {
   button {
     max-width: 5rem;
-    margin-top: 0px;
+    margin: auto;
   }
 }
 

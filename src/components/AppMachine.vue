@@ -5,7 +5,7 @@
         <li class="items">
           <div class="adap">
             <div  class="flex-wrap">
-              <div><strong>{{ machine.serialNumber }} </strong>
+              <div><strong class="number">{{ machine.serialNumber }} </strong>
                 <div>
                   <app-tags :machId="machine.id"/>
                 </div>
@@ -65,6 +65,10 @@ iframe {
     margin: auto;
   }
   .address, .floor {
+    font-size: large;
+  }
+  .number {
+    margin-left: 50%;
     font-size: large;
   }
   .adap {

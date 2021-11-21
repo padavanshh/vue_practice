@@ -2,6 +2,7 @@
   <div class="max-w-4xl mx-auto">
     <div class="head">
       <h1 style="font-size: xx-large">Список</h1>
+      <button></button>
       <input type="search" v-model="search" placeholder=" Введите адрес">
     </div>
     <AppMachine :tradePoints="filteredItems"/>

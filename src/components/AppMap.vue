@@ -5,6 +5,7 @@
 <script>
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import icon from 'leaflet/dist/images/marker-icon.png';
 
 export default {
   props: ['tradePoints'],
@@ -29,13 +30,20 @@ export default {
       // let layerGroup = L.layerGroup([hydMarker, vskpMarker, vjwdMarker]);
       //
       // layerGroup.addTo(mapDiv);
+
+      let DefaultIcon = L.icon({
+        iconUrl: icon
+      });
+
+      L.Marker.prototype.options.icon = DefaultIcon;
+
       for (let i = 0; i < this.tradePoints.length; i++) {
        let marker = new L.marker([this.tradePoints[i].location.latitude,this.tradePoints[i].location.longitude])
             marker.addTo(mapDiv);
       }
 
-      let southWest = L.latLng(55.778973, 49.109917),
-          northEast = L.latLng(55.7877, 49.1321),
+      let southWest = L.latLng(55.7589, 49.1197),
+          northEast = L.latLng(55.7877, 49.1221),
           bounds = L.latLngBounds(southWest, northEast);
 
       mapDiv.flyToBounds(bounds);

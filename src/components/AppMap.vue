@@ -40,13 +40,19 @@ export default {
       for (let i = 0; i < this.tradePoints.length; i++) {
        let marker = new L.marker([this.tradePoints[i].location.latitude,this.tradePoints[i].location.longitude])
             marker.addTo(mapDiv);
+
+        let southWest = L.latLng(this.tradePoints[i].location.latitude,this.tradePoints[i].location.longitude),
+            northEast = L.latLng(this.tradePoints[i].location.latitude,this.tradePoints[i].location.longitude),
+            bounds = L.latLngBounds(southWest, northEast);
+
+        mapDiv.flyToBounds(bounds);
       }
 
-      let southWest = L.latLng(55.7589, 49.1197),
-          northEast = L.latLng(55.7877, 49.1221),
-          bounds = L.latLngBounds(southWest, northEast);
-
-      mapDiv.flyToBounds(bounds);
+      // let southWest = L.latLng(55.7589, 49.1197),
+      //     northEast = L.latLng(55.7877, 49.1221),
+      //     bounds = L.latLngBounds(southWest, northEast);
+      //
+      // mapDiv.flyToBounds(bounds);
     },
   },
   mounted() {

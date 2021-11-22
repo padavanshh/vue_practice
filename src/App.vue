@@ -2,10 +2,11 @@
   <div class="max-w-4xl mx-auto">
     <div class="head">
       <h1 style="font-size: xx-large">Список</h1>
-      <button @click="map=!map">toggle</button>
+      <button @click="map=!map">{{ map ? 'Карта' :'Список' }}</button>
       <input type="search" v-model="search" placeholder=" Введите адрес">
     </div>
     <AppMachine :tradePoints="filteredItems" v-if="map"/>
+    <AppMap :tradePoints="filteredItems" v-else/>
   </div>
 
 </template>
@@ -13,9 +14,10 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import AppMachine from "./components/AppMachine";
+import AppMap from "@/components/AppMap";
 
 export default {
-  components: {AppMachine},
+  components: {AppMachine, AppMap},
   data() {
     return {
       search: '',

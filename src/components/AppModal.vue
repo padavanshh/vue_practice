@@ -18,7 +18,6 @@
 
 export default {
   props: ['time'],
-  emits: ['close'],
   data() {
     return {
       modal: false

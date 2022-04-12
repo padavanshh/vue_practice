@@ -50,20 +50,20 @@ input {
   border: 1px solid #DBE2EA;
   text-align: center;
   box-sizing: border-box;
-  box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
+  box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04);
   border-radius: 6px;
 }
 input:hover {
   background: #FFFFFF;
   border: 1px solid #0880AE;
   box-sizing: border-box;
-  box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
+  box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04);
   border-radius: 6px;
 }
 .head {
   border: 1px solid white;
   border-radius: 24px;
-  box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.08), 0px 32px 64px rgba(44, 39, 56, 0.14);
+  box-shadow: 0 12px 24px rgba(44, 39, 56, 0.08), 0 32px 64px rgba(44, 39, 56, 0.14);
   display: flex;
   justify-content: space-around;
   margin: auto;
